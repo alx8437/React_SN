@@ -1,5 +1,5 @@
 import React from 'react';
-import './Profile.css';
+import classes from './Profile.module.css';
 
 const Profile = () => {
     return (
@@ -10,6 +10,11 @@ const Profile = () => {
             <div>
                 <img scr="https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg"></img>
             </div>
+            <div className={classes.item}>О нас</div>
+            <div className={classes.item}>Прочее</div>
+            <div className={classes.item}>Прочее</div>
+            <div className={classes.item}> Прочее</div>
+
 
         </div>
     )
