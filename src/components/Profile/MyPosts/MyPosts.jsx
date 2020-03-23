@@ -18,8 +18,8 @@ const MyPosts = () => {
             <div className={classes.item}>
                 NewPost
             </div>
-            <Post message='How are you?' like='15' />
-            <Post message="I'm fine, thanks" like='20' />
+            <Post message='How are you?' likeCount='15' />
+            <Post message="I'm fine, thanks" likeCount='20' />
 
 
 
