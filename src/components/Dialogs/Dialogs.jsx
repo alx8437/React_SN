@@ -1,35 +1,41 @@
 import React from "react";
 import classes from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
+const DialogItem = (props) => {
+    let path = '/dialogs/' + props.id;
+
+    return (
+        <div className={classes.dialog}>
+            <NavLink to={path}>{props.name}</NavLink>
+        </div>
+    )
+}
+
+const Message = (props) => {
+    return <div className={classes.message}>{props.message}</div>
+}
 
 
 const Dialogs = (props) => {
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItem}>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/1'>Juli</NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/2'>Nataly</NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/3'>Robert</NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/4'>John</NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/5'>Thomas</NavLink>
-                </div>
-                <div className={classes.dialog}>
-                    <NavLink to='/dialogs/6'>Nadin</NavLink>
-                </div>
+                <DialogItem name='July' id ='1'/>
+                <DialogItem name='Nataly' id='2'/>
+                <DialogItem name='Robert' id='3' />
+                <DialogItem name="John"   id='4' />
+                <DialogItem name='Thomas' id='5' />
+                <DialogItem name='Nadin' id="6" />
             </div>
             <div className={classes.messages}>
-                <div className={classes.message}>Hello!</div>
-                <div className={classes.message}>Hi</div>
-                <div className={classes.message}>How are you?</div>
+                <Message message='Hello!' />
+                <Message message='How are you?' />
+                <Message message='I am fine, thanks' />
+                <Message message='Where are you from?' />
+                <Message message='I am from Moscow in Russian' />
+                <Message message='Nice to meet you!' />
+
             </div>
 
         </div>
