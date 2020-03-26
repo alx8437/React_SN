@@ -1,7 +1,9 @@
 .item {
+    margin-top: 10px;
     color: orange;
 }
 
 .item img {
+    margin-right: 10px;
     width: 30px;
 }
