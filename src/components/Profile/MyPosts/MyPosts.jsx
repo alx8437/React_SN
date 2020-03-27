@@ -6,7 +6,11 @@ const MyPosts = () => {
     let postsData = [
         {id: 1, post: 'How are you?', likeCount: 15},
         {id: 2, post: "I'm fine, thanks!", likeCount: 20}
-    ]
+    ];
+
+    let posts = postsData.map(p => <Post message={p.post} likeCount={p.likeCount}/>);
+
+
     return (
         <div>
             <div className={classes.postBlock}>
@@ -19,8 +23,7 @@ const MyPosts = () => {
                 </div>
             </div>
             <div className={classes.posts}>
-                <Post message={postsData[0].post} likeCount={postsData[0].likeCount}/>
-                <Post message={postsData[1].post} likeCount={postsData[1].likeCount}/>
+                { posts }
             </div>
         </div>
 
