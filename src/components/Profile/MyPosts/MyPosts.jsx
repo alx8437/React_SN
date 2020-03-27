@@ -13,7 +13,7 @@ const MyPosts = () => {
 
     return (
         <div>
-            <div className={classes.postBlock}>
+            <div className={classes.postBlock}>`
                 <h3>MyPosts</h3>
                 <div className={classes.textarea}>
                     <textarea></textarea>
