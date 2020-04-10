@@ -8,10 +8,10 @@ const Dialogs = (props) => {
     let dialogs = props.state.dialog.map(d => <DialogItem name={d.name} id={d.id}/>);
     let messages = props.state.messages.map(m => <Message message={m.message}/>);
 
-    let addNewPost = React.createRef();
+    let textPost = React.createRef();
 
     const text = () => {
-      alert(addNewPost.current.value)
+      alert(textPost.current.value)
     };
 
     return (
@@ -23,7 +23,7 @@ const Dialogs = (props) => {
                 { messages }
             </div>
             <div className={classes.textarea}>
-                <textarea ref={addNewPost}></textarea>
+                <textarea ref={textPost}></textarea>
             </div>
             <div>
                 <button onClick={text}>add post</button>
