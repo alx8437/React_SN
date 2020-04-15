@@ -1,6 +1,9 @@
-let state = {
+import {renderAllTree} from "../render";
 
+let state = {
     profilePage: {
+
+        newPostText: '',
 
         posts: [
             {id: 1, post: 'How are you?', likeCount: 15},
@@ -28,14 +31,24 @@ let state = {
             {id: 5, name: 'Nadin'},
             {id: 6, name: 'Raichel'}
         ],
-
     }
 
 };
 
-export const addPost = (postMessage) => {
-    let newPost = {id: 3, post: postMessage, likeCount: 0};
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
+    renderAllTree(state);
+}
+
+export const addPost = () => {
+    let newPost = {
+        id: 3,
+        post: state.profilePage.newPostText,
+        likeCount: 0
+    };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    renderAllTree(state);
 };
 
 export default state;
