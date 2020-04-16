@@ -1,14 +1,14 @@
-import {renderAllThree} from "../render";
+import {rerenderEntireThree} from "../render";
 
 let state = {
     profilePage: {
 
-        newPostText: '',
 
         posts: [
             {id: 1, post: 'How are you?', likeCount: 15},
             {id: 2, post: "I'm fine, thanks!", likeCount: 20}
-        ]
+        ],
+
 
     },
 
@@ -35,20 +35,15 @@ let state = {
 
 };
 
-export const updateNewPostText = (newText) => {
-    state.profilePage.newPostText = newText;
-    renderAllThree(state);
-}
-
-export const addPost = () => {
-    let newPost = {
-        id: 3,
-        post: state.profilePage.newPostText,
-        likeCount: 0
-    };
+export const addPost = (postText) => {
+    let newPost = {id: 3, post: postText, likeCount: 0}
     state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = '';
-    renderAllThree(state);
+    console.log(state.profilePage.posts);
+    rerenderEntireThree();
 };
+
+
+
+
 
 export default state;

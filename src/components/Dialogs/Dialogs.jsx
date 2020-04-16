@@ -23,7 +23,7 @@ const Dialogs = (props) => {
                 { messages }
             </div>
             <div className={classes.textarea}>
-                <textarea ref={textPost}></textarea>
+                <textarea ref={textPost}/>
             </div>
             <div>
                 <button onClick={text}>add post</button>

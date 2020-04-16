@@ -1,15 +1,18 @@
+import React from 'react';
+import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import React from "react";
-import {addPost, updateNewPostText} from "./redux/state";
+import state, {addPost} from "./redux/state";
 
-
-export const renderAllThree = (state) => {
+export let rerenderEntireThree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
+            <App state={state} addPost={addPost}/>
         </BrowserRouter>,
         document.getElementById('root'));
 };
+
+
+
 
