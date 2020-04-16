@@ -1,4 +1,4 @@
-import {renderAllTree} from "../render";
+import {renderAllThree} from "../render";
 
 let state = {
     profilePage: {
@@ -37,7 +37,7 @@ let state = {
 
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
-    renderAllTree(state);
+    renderAllThree(state);
 }
 
 export const addPost = () => {
@@ -48,7 +48,7 @@ export const addPost = () => {
     };
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText = '';
-    renderAllTree(state);
+    renderAllThree(state);
 };
 
 export default state;

@@ -5,7 +5,7 @@ import React from "react";
 import {addPost, updateNewPostText} from "./redux/state";
 
 
-export const renderAllTree = (state) => {
+export const renderAllThree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
             <App state={state} addPost={addPost} updateNewPostText={updateNewPostText}/>
