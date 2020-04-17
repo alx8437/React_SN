@@ -8,6 +8,7 @@ let state = {
             {id: 1, post: 'How are you?', likeCount: 15},
             {id: 2, post: "I'm fine, thanks!", likeCount: 20}
         ],
+        newPostText: ""
 
 
     },
@@ -35,12 +36,22 @@ let state = {
 
 };
 
-export const addPost = (postText) => {
-    let newPost = {id: 3, post: postText, likeCount: 0}
+export const addPost = () => {
+    let newPost = {
+        id: 3,
+        post: state.profilePage.newPostText,
+        likeCount: 0
+    };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = ''
 
     rerenderEntireThree(state);
 };
+
+export const updateNewPostText = (newPost) => {
+    state.profilePage.newPostText = newPost;
+    rerenderEntireThree(state);
+}
 
 
 
