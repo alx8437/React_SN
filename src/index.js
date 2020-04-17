@@ -1,11 +1,12 @@
 import React from 'react';
 import {rerenderEntireThree} from "./render";
 import * as serviceWorker from "./serviceWorker";
+import state from "./redux/state";
 
 
 
 
-rerenderEntireThree();
+rerenderEntireThree(state);
 
 
 // If you want your app to work offline and load faster, you can change

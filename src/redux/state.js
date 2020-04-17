@@ -1,8 +1,8 @@
 import {rerenderEntireThree} from "../render";
 
 let state = {
-    profilePage: {
 
+    profilePage: {
 
         posts: [
             {id: 1, post: 'How are you?', likeCount: 15},
@@ -38,8 +38,8 @@ let state = {
 export const addPost = (postText) => {
     let newPost = {id: 3, post: postText, likeCount: 0}
     state.profilePage.posts.push(newPost);
-    console.log(state.profilePage.posts);
-    rerenderEntireThree();
+
+    rerenderEntireThree(state);
 };
 
 
