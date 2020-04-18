@@ -43,15 +43,21 @@ export const addPost = () => {
         likeCount: 0
     };
     state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = ''
-
+    state.profilePage.newPostText = '';
     rerenderEntireThree(state);
 };
 
 export const updateNewPostText = (newPost) => {
     state.profilePage.newPostText = newPost;
     rerenderEntireThree(state);
-}
+};
+
+export const newMessage = (newMessagePost) => {
+    let addMessage = {id: 6, message: newMessagePost};
+    state.dialogsPage.messages.push(addMessage);
+    rerenderEntireThree(state);
+
+};
 
 
 
