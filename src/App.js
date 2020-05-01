@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import MyPosts from "./components/Profile/MyPosts/MyPosts";
 import Sidebar from "./components/Navbar/Sidebar/Sidebar";
+import {addNewMessage} from "./redux/state";
 
 
 const App = (props) => {
@@ -27,9 +28,10 @@ const App = (props) => {
                 />
                 <Route path='/dialogs' render={() =>
                        <Dialogs
-                           state={props.state.dialogsPage}
-                           dialog={props.state.dialogsPage}
-                           newMessage={props.newMessage}
+                           // state={props.state.dialogsPage}
+                           dialogsPage={props.state.dialogsPage}
+                           addNewMessage={props.addNewMessage}
+                           updateNewMessageText={props.updateNewMessageText}
                        />}
                 />
                 <Route path='/news' component={News}/>

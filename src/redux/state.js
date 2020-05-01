@@ -12,13 +12,15 @@ let state = {
 
     dialogsPage: {
         messages: [
-            {id: 0, message: 'Hello!'},
-            {id: 1, message: 'How are you?'},
-            {id: 2, message: 'I am fine, thanks!'},
-            {id: 3, message: 'Where are you from?'},
-            {id: 4, message: 'I am from Moscow in Russian'},
-            {id: 5, message: 'Nice to meet you!'}
+            {id: 1, message: 'Hello!'},
+            {id: 2, message: 'How are you?'},
+            {id: 3, message: 'I am fine, thanks!'},
+            {id: 4, message: 'Where are you from?'},
+            {id: 5, message: 'I am from Moscow in Russian'},
+            {id: 6, message: 'Nice to meet you!'}
         ],
+        newMessageText: "",
+
         dialog: [
             {id: 1, name: 'July'},
             {id: 2, name: 'Robert'},
@@ -47,18 +49,22 @@ export const addPost = () => {
     rerenderEntireThree(state);
 };
 
-export const updateNewPostText = (newPost) => {
-    state.profilePage.newPostText = newPost;
+export const updateNewPostText = (newPostText) => {
+    state.profilePage.newPostText = newPostText;
     rerenderEntireThree(state);
 };
 
-export const newMessage = (newMessagePost) => {
+export const addNewMessage = (newMessagePost) => {
     let addMessage = {id: 6, message: newMessagePost};
     state.dialogsPage.messages.push(addMessage);
+    state.dialogsPage.newMessageText = '';
     rerenderEntireThree(state);
-
 };
 
+export const  updateNewMessageText = (newTextMessage) => {
+    state.dialogsPage.newMessageText = newTextMessage;
+    rerenderEntireThree(state);
+}
 
 
 

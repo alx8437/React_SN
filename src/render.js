@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";
-import {addPost, newMessage, updateNewPostText} from "./redux/state";
+import {addPost, addNewMessage, updateNewPostText, updateNewMessageText} from "./redux/state";
 
 export let rerenderEntireThree = (state) => {
     ReactDOM.render(
@@ -11,7 +11,8 @@ export let rerenderEntireThree = (state) => {
                 state={state}
                 addPost={addPost}
                 updateNewPostText={updateNewPostText}
-                newMessage={newMessage}
+                addNewMessage={addNewMessage}
+                updateNewMessageText={updateNewMessageText}
             />
         </BrowserRouter>,
         document.getElementById('root'));
