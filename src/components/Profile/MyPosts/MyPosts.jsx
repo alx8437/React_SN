@@ -9,13 +9,13 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     const addPost = () => {
-        props.addPost();
-        props.updateNewPostText('');
+        props.store.addPost();
+        props.store.updateNewPostText('');
     };
 
     const onPostChange = () => {
         let text = newPostElement.current.value;
-        props.updateNewPostText(text)
+        props.store.updateNewPostText(text)
     };
 
     return (
