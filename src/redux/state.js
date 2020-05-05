@@ -49,6 +49,7 @@ let store = {
 
 
     addPost() {
+        debugger
         let newPost = {
             id: 3,
             post: this._state.profilePage.newPostText,
@@ -79,7 +80,7 @@ let store = {
     subscribe(observer){
         this._rerenderEntireThree = observer
     }
-}
+};
 
 
 export default store;
