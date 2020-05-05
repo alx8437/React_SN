@@ -8,9 +8,6 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import MyPosts from "./components/Profile/MyPosts/MyPosts";
-import Sidebar from "./components/Navbar/Sidebar/Sidebar";
-import {addNewMessage} from "./redux/state";
 
 
 const App = (props) => {
@@ -31,8 +28,8 @@ const App = (props) => {
                        <Dialogs
                            // state={props.state.dialogsPage}
                            dialogsPage={props.state.dialogsPage}
-                           addNewMessage={props.store.addNewMessage()}
-                           updateNewMessageText={props.store.updateNewMessageText()}
+                           addNewMessage={props.store.addNewMessage}
+                           updateNewMessageText={props.store.updateNewMessageText}
                        />}
                 />
                 <Route path='/news' component={News}/>
