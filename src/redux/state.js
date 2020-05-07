@@ -5,6 +5,7 @@ let store = {
 
     _rerenderEntireThree() {},
 
+
     _state: {
 
         profilePage: {
@@ -47,39 +48,34 @@ let store = {
       return this._state;
     },
 
-
-    addPost() {
-        debugger
-        let newPost = {
-            id: 3,
-            post: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._rerenderEntireThree(this._state);
-    },
-
-    updateNewPostText(newPostText) {
-        this._state.profilePage.newPostText = newPostText;
-        this._rerenderEntireThree(this._state);
-    },
-
-    addNewMessage(newMessagePost) {
-        let addMessage = {id: 6, message: newMessagePost};
-        this._state.dialogsPage.messages.push(addMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._rerenderEntireThree(this._state);
-    },
-
-    updateNewMessageText(newTextMessage) {
-        this._state.dialogsPage.newMessageText = newTextMessage;
-        this._rerenderEntireThree(this._state);
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+            let newPost = {
+                id: 3,
+                post: this._state.profilePage.newPostText,
+                likeCount: 0
+            };
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._rerenderEntireThree(this._state);
+        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+            this._state.profilePage.newPostText = action.newPostText;
+            this._rerenderEntireThree(this._state);
+        } else if (action.type === "ADD-NEW-MESSAGE") {
+            let addMessage = {id: 6, message: action.newMessagePost};
+            this._state.dialogsPage.messages.push(addMessage);
+            this._state.dialogsPage.newMessageText = '';
+            this._rerenderEntireThree(this._state);
+        } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+            this._state.dialogsPage.newMessageText = action.newTextMessage;
+            this._rerenderEntireThree(this._state);
+        }
     },
 
     subscribe(observer){
         this._rerenderEntireThree = observer
-    }
+    },
+
 };
 
 
