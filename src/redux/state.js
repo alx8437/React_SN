@@ -1,4 +1,7 @@
-
+const ADD_POST = "ADD-POST";
+const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
 
 
 let store = {
@@ -13,7 +16,7 @@ let store = {
                 {id: 1, post: 'How are you?', likeCount: 15},
                 {id: 2, post: "I'm fine, thanks!", likeCount: 20}
             ],
-            newPostText: ""
+            newPostText: "123"
         },
 
         dialogsPage: {
@@ -25,7 +28,7 @@ let store = {
                 {id: 5, message: 'I am from Moscow in Russian'},
                 {id: 6, message: 'Nice to meet you!'}
             ],
-            newMessageText: "",
+            newMessageText: "123",
 
             dialog: [
                 {id: 1, name: 'July'},
@@ -49,20 +52,20 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === "ADD-POST") {
+        if (action.type === ADD_POST) {
             let newPost = {id: 3, post: this._state.profilePage.newPostText, likeCount: 0};
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._rerenderEntireThree(this._state);
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newPostText;
             this._rerenderEntireThree(this._state);
-        } else if (action.type === "ADD-NEW-MESSAGE") {
+        } else if (action.type === ADD_NEW_MESSAGE) {
             let addMessage = {id: 6, message: this._state.dialogsPage.newMessageText};
             this._state.dialogsPage.messages.push(addMessage);
             this._state.dialogsPage.newMessageText = '';
             this._rerenderEntireThree(this._state);
-        } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
             this._state.dialogsPage.newMessageText = action.newTextMessage;
             this._rerenderEntireThree(this._state);
         }
@@ -73,6 +76,12 @@ let store = {
     },
 
 };
+
+export const onAddPostActionCreater = () => ({ type: ADD_POST });
+export const  onPostChangeActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
+export const addNewMessageActionCreater = () => ({type: ADD_NEW_MESSAGE});
+export const onMessageChangeActionCreater = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newTextMessage: text})
+
 
 
 export default store;
