@@ -16,7 +16,7 @@ let store = {
                 {id: 1, post: 'How are you?', likeCount: 15},
                 {id: 2, post: "I'm fine, thanks!", likeCount: 20}
             ],
-            newPostText: "123"
+            newPostText: ""
         },
 
         dialogsPage: {
@@ -28,7 +28,7 @@ let store = {
                 {id: 5, message: 'I am from Moscow in Russian'},
                 {id: 6, message: 'Nice to meet you!'}
             ],
-            newMessageText: "123",
+            newMessageText: "",
 
             dialog: [
                 {id: 1, name: 'July'},
@@ -77,10 +77,10 @@ let store = {
 
 };
 
-export const onAddPostActionCreater = () => ({ type: ADD_POST });
-export const  onPostChangeActionCreater = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
-export const addNewMessageActionCreater = () => ({type: ADD_NEW_MESSAGE});
-export const onMessageChangeActionCreater = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newTextMessage: text})
+export const onAddPostActionCreator = () => ({ type: ADD_POST });
+export const  onPostChangeActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
+export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE});
+export const onMessageChangeActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newTextMessage: text})
 
 
 
