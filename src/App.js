@@ -19,8 +19,7 @@ const App = (props) => {
                 <Route path='/profile' render={() =>
                     <Profile
                         profilePage={props.state.profilePage}
-                        addPost={props.addPost}
-                        updateNewPostText={props.updateNewPostText}
+                        dispatch={props.dispatch}
                     />}
                 />
                 <Route path='/dialogs' render={() =>
@@ -36,5 +35,4 @@ const App = (props) => {
         </div>
     )
 };
-debugger
 export default App;

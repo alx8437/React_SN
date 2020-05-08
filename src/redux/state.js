@@ -50,11 +50,7 @@ let store = {
 
     dispatch(action) {
         if (action.type === "ADD-POST") {
-            let newPost = {
-                id: 3,
-                post: this._state.profilePage.newPostText,
-                likeCount: 0
-            };
+            let newPost = {id: 3, post: this._state.profilePage.newPostText, likeCount: 0};
             this._state.profilePage.posts.push(newPost);
             this._state.profilePage.newPostText = '';
             this._rerenderEntireThree(this._state);
@@ -62,7 +58,7 @@ let store = {
             this._state.profilePage.newPostText = action.newPostText;
             this._rerenderEntireThree(this._state);
         } else if (action.type === "ADD-NEW-MESSAGE") {
-            let addMessage = {id: 6, message: action.newMessagePost};
+            let addMessage = {id: 6, message: this._state.dialogsPage.newMessageText};
             this._state.dialogsPage.messages.push(addMessage);
             this._state.dialogsPage.newMessageText = '';
             this._rerenderEntireThree(this._state);

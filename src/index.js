@@ -15,7 +15,6 @@ let rerenderEntireThree = (state) => {
         document.getElementById('root'));
 };
 
-debugger
 rerenderEntireThree(store.getState());
 
 store.subscribe(rerenderEntireThree);
