@@ -1,3 +1,8 @@
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
+import sidebar from "./sidebar";
+
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
@@ -36,9 +41,11 @@ let store = {
                 {id: 3, name: 'John'},
                 {id: 4, name: 'Thomas'},
                 {id: 5, name: 'Nadin'},
-                {id: 6, name: 'Raichel'}
+                {id: 6, name: 'Raichel'},
+                {id: 7, name: 'Rob'}
             ],
         },
+
         sidebar: [
             {id: 1, name: 'Robert'},
             {id: 2, name: 'Juan'},
@@ -52,23 +59,12 @@ let store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {id: 3, post: this._state.profilePage.newPostText, likeCount: 0};
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._rerenderEntireThree(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText;
-            this._rerenderEntireThree(this._state);
-        } else if (action.type === ADD_NEW_MESSAGE) {
-            let addMessage = {id: 6, message: this._state.dialogsPage.newMessageText};
-            this._state.dialogsPage.messages.push(addMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this._rerenderEntireThree(this._state);
-        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-            this._state.dialogsPage.newMessageText = action.newTextMessage;
-            this._rerenderEntireThree(this._state);
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebar = sidebar(this._state.sidebar, action);
+
+        this._rerenderEntireThree(this._state);
     },
 
     subscribe(observer){
@@ -76,12 +72,6 @@ let store = {
     },
 
 };
-
-export const onAddPostActionCreator = () => ({ type: ADD_POST });
-export const  onPostChangeActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newPostText: text});
-export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE});
-export const onMessageChangeActionCreator = (text) => ({type: UPDATE_NEW_MESSAGE_TEXT, newTextMessage: text})
-
 
 
 export default store;
