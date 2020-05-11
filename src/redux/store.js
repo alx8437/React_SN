@@ -1,12 +1,8 @@
 import profileReducer from "./profileReducer";
 import dialogsReducer from "./dialogsReducer";
-import sidebar from "./sidebar";
+import sidebarReducer from "./sidebarReducer";
 
 
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_NEW_MESSAGE = "ADD-NEW-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT"
 
 
 let store = {
@@ -43,7 +39,7 @@ let store = {
                 {id: 5, name: 'Nadin'},
                 {id: 6, name: 'Raichel'},
                 {id: 7, name: 'Rob'}
-            ],
+            ]
         },
 
         sidebar: [
@@ -62,7 +58,7 @@ let store = {
 
         this._state.profilePage = profileReducer(this._state.profilePage, action);
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-        this._state.sidebar = sidebar(this._state.sidebar, action);
+        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
         this._rerenderEntireThree(this._state);
     },
