@@ -1,31 +1,60 @@
 import React from 'react';
 import {onAddPostActionCreator, onPostChangeActionCreator} from "../../../redux/profileReducer";
 import MyPosts from "./MyPosts";
+import MyContext from "../../../MyContext";
 
 
 const MyPostsContainer = (props) => {
 
-    let state = props.store.getState()
+    return ( <MyContext.Consumer>
+        {store => {
 
-    const onAddPost = () => {
-        props.store.dispatch(onAddPostActionCreator())
-    };
+            let state = store.getState();
 
-    const onPostChange = (text) => {
-        let action = onPostChangeActionCreator(text)
-        props.store.dispatch(action)
-    };
+            const onAddPost = () => {
+                store.dispatch(onAddPostActionCreator())
+            };
 
-    return (
-        <div>
-            <MyPosts
-                onPostChange={onPostChange}
-                onAddPost={onAddPost}
-                posts={state.profilePage.posts}
-                newPostText={state.profilePage.newPostText}
-            />
-        </div>
-    )
+            const onPostChange = (text) => {
+                let action = onPostChangeActionCreator(text)
+                store.dispatch(action)
+            };
+
+            return (
+                    <div>
+                        <MyPosts
+                            onPostChange={onPostChange}
+                            onAddPost={onAddPost}
+                            posts={state.profilePage.posts}
+                            newPostText={state.profilePage.newPostText}
+                        />
+                    </div>
+            )
+        }
+        }
+    </MyContext.Consumer> )
+
+    // let state = props.store.getState()
+    //
+    // const onAddPost = () => {
+    //     props.store.dispatch(onAddPostActionCreator())
+    // };
+    //
+    // const onPostChange = (text) => {
+    //     let action = onPostChangeActionCreator(text)
+    //     props.store.dispatch(action)
+    // };
+    //
+    // return (
+    //     <div>
+    //         <MyPosts
+    //             onPostChange={onPostChange}
+    //             onAddPost={onAddPost}
+    //             posts={state.profilePage.posts}
+    //             newPostText={state.profilePage.newPostText}
+    //         />
+    //     </div>
+    // )
 };
 
 export default MyPostsContainer;

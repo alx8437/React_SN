@@ -5,11 +5,10 @@ import MyContext from "../../MyContext";
 
 const DialogsContainer = () => {
 
-    return <MyContext.Consumer>
-
+    return ( <MyContext.Consumer>
         {store => {
 
-            // let state = store.getState()
+            let state = store.getState();
 
             const addNewMessage = () => {
                 store.dispatch(addNewMessageActionCreator())
@@ -32,7 +31,7 @@ const DialogsContainer = () => {
             )
         }
         }
-    </MyContext.Consumer>
+    </MyContext.Consumer> )
 
 };
 
