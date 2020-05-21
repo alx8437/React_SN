@@ -6,11 +6,8 @@ import Friend from "./Friend/Friend";
 
 const Sidebar = (props) => {
 
-
-    let sidebar = props.store.getState().sidebar
-
+    let sidebar = props.sidebar
     let friends = sidebar.map(f => <Friend name ={f.name} />)
-
 
     return (
         <div className={styles.sideBar_wrapper}>
@@ -21,6 +18,5 @@ const Sidebar = (props) => {
         </div>
     )
 };
-
 
 export default Sidebar;
