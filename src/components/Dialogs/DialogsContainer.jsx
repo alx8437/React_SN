@@ -9,7 +9,7 @@ import {connect} from "react-redux";
             dialog: state.dialogsPage.dialog,
             messages: state.dialogsPage.messages
         }
-    }
+    };
 
     let mapDispatchToProps = (dispatch) => {
         return {
@@ -21,7 +21,7 @@ import {connect} from "react-redux";
             },
         }
 
-    }
+    };
 
 const DialogContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
