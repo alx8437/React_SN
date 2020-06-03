@@ -5,10 +5,10 @@ const SET_USERS = "SET_USERS";
 
 let initialState = {
     users: [
-        // {id: 1, fullName: 'Alex', followed: true, status: 'student', location: {city: "Krasnodar", country: "Russian"}},
-        // {id: 2, fullName: 'John', followed: false, status: 'student', location: {city: "New-York", country: "USA"}},
-        // {id: 3, fullName: 'Mia', followed: true, status: 'student', location: {city: "Berlin", country: "Germany"}},
-        // {id: 4, fullName: 'Zofia', followed: false, status: 'student', location: {city: "Warsaw", country: "Poland"}}
+        {id: 1, fotoUrl: 'https://mult.tv/images/super-krylya.webp', fullName: 'Alex', followed: true, status: 'student', location: {city: "Krasnodar", country: "Russian"}},
+        {id: 2, fotoUrl: 'https://mult.tv/images/super-krylya.webp', fullName: 'John', followed: false, status: 'student', location: {city: "New-York", country: "USA"}},
+        {id: 3, fotoUrl: 'https://mult.tv/images/super-krylya.webp', fullName: 'Mia', followed: true, status: 'student', location: {city: "Berlin", country: "Germany"}},
+        {id: 4, fotoUrl: 'https://mult.tv/images/super-krylya.webp', fullName: 'Zofia', followed: false, status: 'student', location: {city: "Warsaw", country: "Poland"}}
     ]
 };
 
