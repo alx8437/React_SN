@@ -8,7 +8,7 @@ let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 21,
-    currentPage: 5
+    currentPage: 1
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS:
             return {
                 ...state,
-                users: [...state.users, ...action.users]
+                users: action.users
             }
         case SET_CURRENT_PAGE:
             return {
