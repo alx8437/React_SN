@@ -2,6 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import * as axios from "axios";
 import {connect} from "react-redux";
+import {setUserProfile} from "../../redux/profileReducer";
 
 class ProfileApi extends React.Component {
 
@@ -14,21 +15,27 @@ class ProfileApi extends React.Component {
             }
         )
             .then(res => {
-                this.props.setUserProfile()
+                this.props.setUserProfile(res.data)
             })
     }
 
     render() {
         return (
-            <Profile {...this.props}/>
+            <Profile
+                {...this.props}
+                profile={this.props.profile}
+            />
         )
+    }
+}
+
+const mapStateToProps = (state) => {
+    return {
+        profile: state.profilePage.userProfile
     }
 };
 
-const mapStateToProps = (state) => {
 
-}
-
-const ProfileContainer = connect(mapStateToProps, {})(ProfileApi)
+const ProfileContainer = connect(mapStateToProps, {setUserProfile})(ProfileApi);
 
 export default ProfileContainer
