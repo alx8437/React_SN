@@ -10,8 +10,11 @@ const ProfileInfo = (props) => {
         <div>
             <div className={classes.content}>
                 ava
-                <img src={"https://openimagedenoise.github.io/images/moana_16spp_oidn.jpg"}></img>
+                <img className={classes.backimg} src={"https://openimagedenoise.github.io/images/moana_16spp_oidn.jpg"}></img>
                 <img src={props.profile.photos.large}></img>
+                <div>vk - {props.profile.contacts.vk}</div>
+                <div>full name - {props.profile.fullName}</div>
+                <div>about - {props.profile.aboutMe}</div>
             </div>
         </div>
     )
