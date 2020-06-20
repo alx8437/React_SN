@@ -7,3 +7,9 @@
     width: 50px;
 }
 
+.login a {
+    padding: 20px;
+    float: right;
+    color: white;
+}
+
