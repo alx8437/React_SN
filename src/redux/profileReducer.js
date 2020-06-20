@@ -36,8 +36,6 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 userProfile: action.user
             };
-
-
         default:
             return state;
     }
