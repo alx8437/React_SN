@@ -4,41 +4,31 @@ import {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, 
 import Users from "./Users";
 import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
+import {getUsers} from "../../api/api";
 
 
 class UsersApi extends React.Component {
 
     componentDidMount() {
-        this.props.setIsFetching(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`,
-            {
-                withCredentials: true,
-                headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
-            }
-            )
+        this.props.setIsFetching(true);
+        getUsers(this.props.currentPage, this.props.pageSize)
             .then(response => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setIsFetching(false);
+                this.props.setUsers(response.items);
+                this.props.setTotalUsersCount(response.totalCount)
             })
     }
 
 
     onPageChanged = (pageNumber) => {
-        this.props.setIsFetching(true)
-        this.props.setCurrentPage(pageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`,
-            {
-                withCredentials: true,
-                headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
-            }
-            )
-
+        this.props.setIsFetching(true);
+        this.props.setCurrentPage(pageNumber);
+        getUsers(pageNumber, this.props.pageSize)
             .then(response => {
-                this.props.setIsFetching(false)
-                this.props.setUsers(response.data.items);
+                this.props.setIsFetching(false);
+                this.props.setUsers(response.items);
             })
-    }
+    };
 
     render() {
 
@@ -68,7 +58,7 @@ const mapStateToProps = (state) => {
         currentPage: state.usersReducer.currentPage,
         isFetching: state.usersReducer.isFetching
     }
-}
+};
 
 
 
