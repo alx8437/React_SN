@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 
 const Users = (props) => {
-
     let pages = Math.ceil(props.totalUsersCount / props.pageSize);
     let pageCount = [];
     for (let i = 1; i <= pages; i += 1) {
@@ -35,7 +34,8 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button onClick={() => {
+                                ? <button disabled={props.toggleIsFollow} onClick={() => {
+                                    props.toggleFollowingProgress(true);
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                                         {
                                             withCredentials: true,
@@ -46,10 +46,11 @@ const Users = (props) => {
                                             if (res.data.resultCode === 0) {
                                                 props.followUser(u.id);
                                             }
+                                            props.toggleFollowingProgress(false);
                                         })
-
                                 }}>Unfollow</button>
                                 : <button onClick={() => {
+                                    props.toggleFollowingProgress(true)
                                     axios.post(
                                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
                                         {
@@ -61,6 +62,7 @@ const Users = (props) => {
                                             if (res.data.resultCode === 0) {
                                                 props.unFollowUser(u.id);
                                             }
+                                            props.toggleFollowingProgress(false)
                                         });
 
 
