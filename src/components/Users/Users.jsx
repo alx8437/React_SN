@@ -34,8 +34,8 @@ const Users = (props) => {
                         </div>
                         <div>
                             {u.followed
-                                ? <button disabled={props.toggleIsFollow} onClick={() => {
-                                    props.toggleFollowingProgress(true);
+                                ? <button disabled={props.toggleIsFollow.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
                                     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                                         {
                                             withCredentials: true,
@@ -46,11 +46,11 @@ const Users = (props) => {
                                             if (res.data.resultCode === 0) {
                                                 props.followUser(u.id);
                                             }
-                                            props.toggleFollowingProgress(false);
+                                            props.toggleFollowingProgress(false, u.id);
                                         })
                                 }}>Unfollow</button>
-                                : <button onClick={() => {
-                                    props.toggleFollowingProgress(true)
+                                : <button disabled={props.toggleIsFollow.some(id => id === u.id)} onClick={() => {
+                                    props.toggleFollowingProgress(true, u.id);
                                     axios.post(
                                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {},
                                         {
@@ -62,7 +62,7 @@ const Users = (props) => {
                                             if (res.data.resultCode === 0) {
                                                 props.unFollowUser(u.id);
                                             }
-                                            props.toggleFollowingProgress(false)
+                                            props.toggleFollowingProgress(false, u.id);
                                         });
 
 

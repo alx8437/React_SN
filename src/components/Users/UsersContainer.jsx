@@ -17,6 +17,7 @@ import {getUsers} from "../../api/api";
 
 class UsersApi extends React.Component {
 
+
     componentDidMount() {
         this.props.setIsFetching(true);
         getUsers(this.props.currentPage, this.props.pageSize)
@@ -73,5 +74,12 @@ const mapStateToProps = (state) => {
 
 
 
-const UsersContainer = connect(mapStateToProps, {followUser, unFollowUser, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, toggleFollowingProgress})(UsersApi);
+const UsersContainer = connect(mapStateToProps, {
+    followUser,
+    unFollowUser,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount,
+    setIsFetching,
+    toggleFollowingProgress})(UsersApi);
 export default UsersContainer;
