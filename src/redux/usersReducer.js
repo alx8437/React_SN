@@ -1,10 +1,12 @@
+import {getUsers} from "../api/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_TOTAL_USER_COUNT = "SET_TOTAL_USER_COUNT";
 const SET_IS_FETCHING = "SET_IS_FETCHING";
-const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS"
+const TOGGLE_IS_FOLLOWING_PROGRESS = "TOGGLE_IS_FOLLOWING_PROGRESS";
 
 
 let initialState = {
@@ -13,7 +15,7 @@ let initialState = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: true,
-    followingInProgress: []
+    followingInProgress: [],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -23,53 +25,55 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return {...user, followed: false}
+                        return {...user, followed: false};
                     }
-                    return user
-                })
+                    return user;
+                }),
             };
         case UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return {...user, followed: true}
+                        return {...user, followed: true};
                     }
-                    return user
-                })
+                    return user;
+                }),
             };
         case SET_USERS:
             return {
                 ...state,
-                users: action.users
+                users: action.users,
             };
         case SET_CURRENT_PAGE:
             return {
                 ...state,
-                currentPage: action.currentPage
+                currentPage: action.currentPage,
             };
         case SET_TOTAL_USER_COUNT:
             return {
                 ...state,
-                totalUsersCount: action.count
+                totalUsersCount: action.count,
             };
         case SET_IS_FETCHING:
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetching: action.isFetching,
             };
         case TOGGLE_IS_FOLLOWING_PROGRESS:
             debugger
-            return  {
+            return {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id !== action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId),
             };
         default:
             return state;
     }
 };
+
+// ActionCreators
 
 export const followUser = (userId) => ({type: FOLLOW, userId});
 export const unFollowUser = (userId) => ({type: UNFOLLOW, userId});
@@ -77,7 +81,33 @@ export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USER_COUNT, count: totalUsersCount});
 export const setIsFetching = (isFetching) => ({type: SET_IS_FETCHING, isFetching});
-export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId});
+export const toggleFollowingProgress = (isFetching, userId) => ({
+    type: TOGGLE_IS_FOLLOWING_PROGRESS,
+    isFetching,
+    userId,
+});
+
+// Thunk
+
+export const getUsersThuncCreator = (currentPage, pageSize) => (dispatch, getState) => {
+    dispatch(setIsFetching(true));
+    getUsers(currentPage, pageSize)
+        .then(response => {
+            dispatch(setIsFetching(false));
+            dispatch(setUsers(response.items));
+            dispatch(setTotalUsersCount(response.totalCount));
+        });
+};
+
+export const onPageChangedThuncCreator = (pageNumber, pageSize) => (dispatch, getState) => {
+    dispatch(setIsFetching(true));
+    dispatch(setCurrentPage(pageNumber));
+    getUsers(pageNumber, pageSize)
+        .then(response => {
+            dispatch(setIsFetching(false));
+            dispatch(setUsers(response.items));
+        })
+}
 
 
 export default usersReducer;
