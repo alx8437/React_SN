@@ -9,7 +9,7 @@ homepage: https://alx8437.github.io/React_SN
 
 
 
-Проект Social Network. 
+Проект Social Network. SPA.
 
 Здесь реализованы следующие подходы к реализации стейт менеджмента и отображения UI:
 
