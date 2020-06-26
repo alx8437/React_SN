@@ -9,7 +9,7 @@ let reducers = combineReducers({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     usersReducer: usersReducer,
-    authUser: authUserReducer
+    authUser: authUserReducer,
 });
 
 let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());

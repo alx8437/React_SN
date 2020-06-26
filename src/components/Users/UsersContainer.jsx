@@ -10,7 +10,6 @@ import {
     toggleFollowingProgress
 } from "../../redux/usersReducer";
 import Users from "./Users";
-import * as axios from "axios";
 import Preloader from "../common/Preloader/Preloader";
 import {getUsers} from "../../api/api";
 
