@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/React_SN/static/css/main.aa1a1a4f.chunk.css",
+    "main.js": "/React_SN/static/js/main.f11e6011.chunk.js",
+    "main.js.map": "/React_SN/static/js/main.f11e6011.chunk.js.map",
+    "runtime-main.js": "/React_SN/static/js/runtime-main.c09cdfbb.js",
+    "runtime-main.js.map": "/React_SN/static/js/runtime-main.c09cdfbb.js.map",
+    "static/js/2.ceca7f26.chunk.js": "/React_SN/static/js/2.ceca7f26.chunk.js",
+    "static/js/2.ceca7f26.chunk.js.map": "/React_SN/static/js/2.ceca7f26.chunk.js.map",
+    "index.html": "/React_SN/index.html",
+    "precache-manifest.b0cb92e1f601e73ef0e4e121077c5127.js": "/React_SN/precache-manifest.b0cb92e1f601e73ef0e4e121077c5127.js",
+    "service-worker.js": "/React_SN/service-worker.js",
+    "static/css/main.aa1a1a4f.chunk.css.map": "/React_SN/static/css/main.aa1a1a4f.chunk.css.map",
+    "static/js/2.ceca7f26.chunk.js.LICENSE.txt": "/React_SN/static/js/2.ceca7f26.chunk.js.LICENSE.txt",
+    "static/media/preloader.gif": "/React_SN/static/media/preloader.aaab3f0f.gif",
+    "static/media/userNoPhoto.png": "/React_SN/static/media/userNoPhoto.3645b2b6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c09cdfbb.js",
+    "static/js/2.ceca7f26.chunk.js",
+    "static/css/main.aa1a1a4f.chunk.css",
+    "static/js/main.f11e6011.chunk.js"
+  ]
+}
