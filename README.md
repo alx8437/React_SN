@@ -1,13 +1,15 @@
-! Для Ajax запросов и работы с API !
+!!! Для Ajax запросов и работы с API !
 Т.к. логинизация организована с помощью cookie нужно
 залогинится на ресурсе https://social-network.samuraijs.com/
 
 Email: free@samuraijs.com
 Password: free
 
+homepage: https://alx8437.github.io/React_SN
 
 
-Проект Social Network. 
+
+Проект Social Network. SPA.
 
 Здесь реализованы следующие подходы к реализации стейт менеджмента и отображения UI:
 
