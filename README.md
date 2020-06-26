@@ -5,6 +5,8 @@
 Email: free@samuraijs.com
 Password: free
 
+homepage: https://alx8437.github.io/React_SN
+
 
 
 Проект Social Network. 
