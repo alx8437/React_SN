@@ -1,4 +1,4 @@
-import {getUsers} from "../api/api";
+import {followingUser, getUsers, unFollowingUser} from "../api/api";
 import * as axios from "axios";
 
 const FOLLOW = "FOLLOW";
@@ -100,44 +100,23 @@ export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch, getSta
         });
 };
 
-export const onPageChangedThunkCreator = (pageNumber, pageSize) => (dispatch, getState) => {
-    dispatch(setIsFetching(true));
-    dispatch(setCurrentPage(pageNumber));
-    getUsers(pageNumber, pageSize)
-        .then(response => {
-            dispatch(setIsFetching(false));
-            dispatch(setUsers(response.items));
-        });
-};
 
-
-export const unFollowedThunkCreator = (usedId) => (dispatch, getState) => {
-    dispatch(toggleFollowingProgress(true, usedId));
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${usedId}`,
-        {
-            withCredentials: true,
-            headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
-        },
-    )
+export const unFollowedThunkCreator = (userId) => (dispatch, getState) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    unFollowingUser(userId)
         .then(res => {
-            if (res.data.resultCode === 0) {
-                dispatch(followUser(usedId));
+            if (res.resultCode === 0) {
+                dispatch(followUser(userId));
             }
-            dispatch(toggleFollowingProgress(false, usedId));
+            dispatch(toggleFollowingProgress(false, userId));
         });
 };
 
 export const followedThunkCreator = (userId) => (dispatch, getState) => {
     dispatch(toggleFollowingProgress(true, userId));
-    axios.post(
-        `https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
-        {
-            withCredentials: true,
-            headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
-        },
-    )
+    followingUser(userId)
         .then(res => {
-            if (res.data.resultCode === 0) {
+            if (res.resultCode === 0) {
                 dispatch(unFollowUser(userId));
             }
             dispatch(toggleFollowingProgress(false, userId));

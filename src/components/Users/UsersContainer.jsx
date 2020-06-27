@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {
     followedThunkCreator,
     getUsersThunkCreator,
-    onPageChangedThunkCreator,
     unFollowedThunkCreator,
 } from "../../redux/usersReducer";
 import Users from "./Users";
@@ -19,7 +18,7 @@ class UsersApi extends React.Component {
 
 
     onPageChanged = (pageNumber) => {
-        this.props.onPageChangedThunkCreator(pageNumber, this.props.pageSize);
+        this.props.getUsersThunkCreator(pageNumber, this.props.pageSize);
     };
 
     render() {
@@ -59,7 +58,6 @@ const mapStateToProps = (state) => {
 
 const UsersContainer = connect(mapStateToProps, {
     getUsersThunkCreator,
-    onPageChangedThunkCreator,
     unFollowedThunkCreator,
     followedThunkCreator,
 })(UsersApi);
