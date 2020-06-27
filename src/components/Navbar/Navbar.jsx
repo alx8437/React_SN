@@ -1,27 +1,45 @@
 import React from 'react';
-import classes from './Navbar.module.css';
+import styles from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-
+import { FaMale, FaEnvelope, FaNewspaper, FaMusic, FaCog, FaUsers} from 'react-icons/fa';
 const Navbar = () => {
     return (
-        <nav className={classes.nav}>
-            <div className={classes.item}>
-                <NavLink to="/profile" activeClassName={classes.active}>Profile</NavLink>
+        <nav className={styles.nav}>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaMale color="#8DC63F" /> </div>
+                    <NavLink to="/profile" className={styles.nonActive} activeClassName={styles.active}>Profile</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/dialogs" activeClassName={classes.active}>Messages</NavLink>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaEnvelope color="#662D91"/></div>
+                    <NavLink to="/dialogs" className={styles.nonActive} activeClassName={styles.active}>Messages</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/news" activeClassName={classes.active}>News</NavLink>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaNewspaper color="#EE5187"/></div>
+                    <NavLink to="/news" className={styles.nonActive} activeClassName={styles.active}>News</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/music" activeClassName={classes.active}>Music</NavLink>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaMusic color="#F7941E"/></div>
+                    <NavLink to="/music" className={styles.nonActive} activeClassName={styles.active}>Music</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/settings" activeClassName={classes.active}>Settings</NavLink>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaCog color="#1C75BC"/></div>
+                    <NavLink to="/settings" className={styles.nonActive} activeClassName={styles.active}>Settings</NavLink>
+                </div>
             </div>
-            <div className={classes.item}>
-                <NavLink to="/users" activeClassName={classes.active}>Users</NavLink>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaUsers color="#9E1F63"/></div>
+                    <NavLink to="/users" className={styles.nonActive} activeClassName={styles.active}>Users</NavLink>
+                </div>
             </div>
         </nav>
     )
