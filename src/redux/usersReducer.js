@@ -1,4 +1,5 @@
 import {getUsers} from "../api/api";
+import * as axios from "axios";
 
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
@@ -89,7 +90,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
 
 // Thunk
 
-export const getUsersThuncCreator = (currentPage, pageSize) => (dispatch, getState) => {
+export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch, getState) => {
     dispatch(setIsFetching(true));
     getUsers(currentPage, pageSize)
         .then(response => {
@@ -99,15 +100,50 @@ export const getUsersThuncCreator = (currentPage, pageSize) => (dispatch, getSta
         });
 };
 
-export const onPageChangedThuncCreator = (pageNumber, pageSize) => (dispatch, getState) => {
+export const onPageChangedThunkCreator = (pageNumber, pageSize) => (dispatch, getState) => {
     dispatch(setIsFetching(true));
     dispatch(setCurrentPage(pageNumber));
     getUsers(pageNumber, pageSize)
         .then(response => {
             dispatch(setIsFetching(false));
             dispatch(setUsers(response.items));
-        })
-}
+        });
+};
 
 
+export const unFollowedThunkCreator = (usedId) => (dispatch, getState) => {
+    dispatch(toggleFollowingProgress(true, usedId));
+    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${usedId}`,
+        {
+            withCredentials: true,
+            headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
+        },
+    )
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(followUser(usedId));
+            }
+            dispatch(toggleFollowingProgress(false, usedId));
+        });
+};
+
+export const followedThunkCreator = (userId) => (dispatch, getState) => {
+    dispatch(toggleFollowingProgress(true, userId));
+    axios.post(
+        `https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {},
+        {
+            withCredentials: true,
+            headers: {"API-KEY": "e655fc0d-99c3-4c81-8dea-0837243fe8bf"},
+        },
+    )
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(unFollowUser(userId));
+            }
+            dispatch(toggleFollowingProgress(false, userId));
+        });
+
+
+};
 export default usersReducer;
+
