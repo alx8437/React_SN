@@ -31,7 +31,7 @@ homepage: https://alx8437.github.io/React_SN
 5) Библиотека react-redux для того чтобы использовать consumer, забирать данные
 из Provider и используя функцию высшего порядка connect доставать state и диспатчить actions в reduser
 
-6) Функция dispatch и actionCreators для диспатча экшенов в Reduser 
+6) Функция dispatch и actionCreators для диспатча экшенов в Reduсers 
 
 7) ThunkCreator организовывает общение BLL c DAL, т.к. UI не должен этим заниматься. Для правильной 
 организации архитектуры приложения нужна такая реализация: UI - BLL - DAL - BLL - UI.
