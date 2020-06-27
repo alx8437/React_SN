@@ -121,8 +121,6 @@ export const followedThunkCreator = (userId) => (dispatch, getState) => {
             }
             dispatch(toggleFollowingProgress(false, userId));
         });
-
-
 };
 export default usersReducer;
 
