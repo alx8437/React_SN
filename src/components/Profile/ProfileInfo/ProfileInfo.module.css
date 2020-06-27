@@ -1,3 +1,12 @@
-.backimg {
-    width: 100%;
+.content {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.otherResurces {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70px;
 }

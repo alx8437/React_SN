@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './MyPosts.module.css';
+import styles from './MyPosts.module.css';
 import Post from './post/Post';
 
 
@@ -7,33 +7,34 @@ const MyPosts = (props) => {
 
     let posts = props.profilePage.posts.map(p => <Post message={p.post} likeCount={p.likeCount}/>);
     const onAddPost = () => {
-        props.onAddPost()
+        props.onAddPost();
     };
 
     const onPostChange = (e) => {
-        debugger
         let text = e.currentTarget.value;
-        props.onPostChange(text)
+        props.onPostChange(text);
     };
 
     return (
         <div>
-            <div className={classes.postBlock}>
-                <h3>MyPosts</h3>
-                <div className={classes.textarea}>
+            <div className={styles.postBlock}>
+                <div className={styles.textarea}>
                     <textarea
+                        className={styles.textarea}
+                        placeholder={"Write what your wish"}
                         onChange={onPostChange}
-                        value={props.profilePage.newPostText}/>
+                        value={props.profilePage.newPostText}
+                    />
                 </div>
-                <div>
-                    <button onClick={onAddPost}>add post</button>
+                <div >
+                    <button className={styles.button} onClick={onAddPost}>add post</button>
                 </div>
             </div>
-            <div className={classes.posts}>
+            <div className={styles.posts}>
                 {posts}
             </div>
         </div>
-    )
+    );
 
 };
 

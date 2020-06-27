@@ -1,5 +1,9 @@
 .postBlock {
-    padding: 10px;
+    width: 320px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 30px;
 }
 
 .posts {
@@ -7,9 +11,21 @@
 }
 
 .textarea {
-    margin-top: 10px;
+    width: 200px;
+    height: 25px;
+    color: #626161;
+    border-radius: 5px;
+
 }
 
-h3 {
-    margin: 0;
+.button {
+    background: #27aae1;
+    padding: 7px 25px;
+    border: none;
+    font-size: 14px;
+    color: #fff;
+    position: relative;
+    font-weight: 600;
+    outline: none;
+    border-radius: 30px;
 }
