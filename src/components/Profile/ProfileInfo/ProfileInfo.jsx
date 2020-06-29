@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={styles.content}>
-                My profile
+                Profile
                 <img src={props.profile.photos.large}></img>
                 <div className={styles.otherResurces}>
                     <div>vk - {props.profile.contacts.vk}</div>
