@@ -1,3 +1,5 @@
+import {userAuthApi} from "../api/api";
+
 const SET_AUTH_USER = "SET_AUTH_USER";
 
 const initialState = {
@@ -23,5 +25,13 @@ const authUserReducer = (state = initialState, action) => {
 
 
 export const setUserAuth = (data) => ({type: SET_AUTH_USER, data})
+
+export const setUserAuthThunk = () => (dispach, getState) => {
+    userAuthApi()
+        .then(res => {
+            debugger
+            dispach(setUserAuth(res.data))
+        })
+}
 
 export default authUserReducer;
