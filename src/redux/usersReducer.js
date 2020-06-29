@@ -1,4 +1,4 @@
-import {followingUserApi, getUsersApi, unFollowingUserApi} from "../api/api";
+import {userApi} from "../api/api";
 import * as axios from "axios";
 
 const FOLLOW = "FOLLOW";
@@ -92,7 +92,7 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
 
 export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch, getState) => {
     dispatch(setIsFetching(true));
-    getUsersApi(currentPage, pageSize)
+    userApi.get(currentPage, pageSize)
         .then(response => {
             dispatch(setIsFetching(false));
             dispatch(setUsers(response.items));
@@ -103,7 +103,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => (dispatch, getSta
 
 export const unFollowedThunkCreator = (userId) => (dispatch, getState) => {
     dispatch(toggleFollowingProgress(true, userId));
-    unFollowingUserApi(userId)
+    userApi.unFollow(userId)
         .then(res => {
             if (res.resultCode === 0) {
                 dispatch(followUser(userId));
@@ -114,7 +114,7 @@ export const unFollowedThunkCreator = (userId) => (dispatch, getState) => {
 
 export const followedThunkCreator = (userId) => (dispatch, getState) => {
     dispatch(toggleFollowingProgress(true, userId));
-    followingUserApi(userId)
+    userApi.follow(userId)
         .then(res => {
             if (res.resultCode === 0) {
                 dispatch(unFollowUser(userId));

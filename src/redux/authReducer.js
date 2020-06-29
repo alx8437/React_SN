@@ -1,4 +1,4 @@
-import {userAuthApi} from "../api/api";
+import {authApi} from "../api/api";
 
 const SET_AUTH_USER = "SET_AUTH_USER";
 
@@ -27,7 +27,7 @@ const authUserReducer = (state = initialState, action) => {
 export const setUserAuth = (data) => ({type: SET_AUTH_USER, data})
 
 export const setUserAuthThunk = () => (dispach, getState) => {
-    userAuthApi()
+    authApi.me()
         .then(res => {
             debugger
             dispach(setUserAuth(res.data))
