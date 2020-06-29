@@ -24,14 +24,13 @@ const authUserReducer = (state = initialState, action) => {
 };
 
 
-export const setUserAuth = (data) => ({type: SET_AUTH_USER, data})
+export const setUserAuth = (data) => ({type: SET_AUTH_USER, data});
 
 export const setUserAuthThunk = () => (dispach, getState) => {
     authApi.me()
         .then(res => {
-            debugger
             dispach(setUserAuth(res.data))
         })
-}
+};
 
 export default authUserReducer;

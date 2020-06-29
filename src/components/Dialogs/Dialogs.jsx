@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Dialogs.module.css";
+import styles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 
@@ -18,23 +18,24 @@ const Dialogs = (props) => {
     };
 
     return (
-        <div className={classes.dialogs}>
-            <div>
-                { dialogs }
+        <div className={styles.dialogs}>
+            <div className={styles.dialogWrapper}>
+                <div>
+                    {dialogs}
+                </div>
+                <div>
+                    {messages}
+                </div>
             </div>
-            <div>
-                { messages }
-            </div>
-            <div className={classes.textarea}>
+            <div className={styles.sendMessage}>
                 <textarea
                     onChange={onMessageChange}
                     value={props.dialogsPage.newMessageText}
                     placeholder="enter your message"
                 />
-            </div>
-            <div>
                 <button onClick={addNewMessage}>send</button>
             </div>
+
         </div>
     )
 };

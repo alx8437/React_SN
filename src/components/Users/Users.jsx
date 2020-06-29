@@ -11,10 +11,10 @@ const Users = (props) => {
     }
 
     return (
-        <div>
-            <div>
+        <div className={styles.wrapper}>
+            <div className={styles.pageChange}>
                 {pageCount.map(p => {
-                    return <span onClick={() => {
+                    return <span  onClick={() => {
                         props.onPageChanged(p);
                     }} className={(p === props.currentPage) ? styles.pageActive : ''}>{p}</span>;
                 })}

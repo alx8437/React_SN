@@ -8,6 +8,7 @@ const Profile = (props) => {
         <div className={styles.profileWrapper}>
             <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
+
         </div>
     );
 };

@@ -1,9 +1,9 @@
 import React from "react";
-import classes from './Music.module.css';
+import styles from './Music.module.css';
 
 const Music = (props) => {
     return (
-        <div>
+        <div className={styles.wrapper}>
             Music
         </div>
     )

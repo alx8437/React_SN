@@ -16,7 +16,7 @@ const MyPosts = (props) => {
     };
 
     return (
-        <div>
+        <div className={styles.postWrapper}>
             <div className={styles.postBlock}>
                 <div className={styles.textarea}>
                     <textarea
