@@ -6,12 +6,14 @@ import logo from "../../assets/images/logo.png"
 
 
 const Header = (props) => {
+    debugger
     return (
         <header className={styles.header}>
             <div className={styles.headerWrapper}>
                 <img src={logo}></img>
                 <div className={styles.login}>
-                    {props.isAuth ? props.login : <NavLink to={"/login"}>login</NavLink>}
+
+                    {props.isAuth ? props.login : <div><NavLink to={"/login"}>login</NavLink></div>}
                 </div>
             </div>
         </header>

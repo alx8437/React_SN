@@ -29,7 +29,10 @@ export const setUserAuth = (data) => ({type: SET_AUTH_USER, data});
 export const setUserAuthThunk = () => (dispach, getState) => {
     authApi.me()
         .then(res => {
-            dispach(setUserAuth(res.data))
+            debugger
+            if (res.resultCode === 0) {
+                dispach(setUserAuth(res.data))
+            }
         })
 };
 

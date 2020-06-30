@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Navbar.module.css';
 import {NavLink} from "react-router-dom";
-import { FaMale, FaEnvelope, FaNewspaper, FaMusic, FaCog, FaUsers} from 'react-icons/fa';
+import { FaMale, FaEnvelope, FaNewspaper, FaMusic, FaCog, FaUsers, FaSignInAlt} from 'react-icons/fa';
 const Navbar = () => {
     return (
         <nav className={styles.nav}>
@@ -39,6 +39,12 @@ const Navbar = () => {
                 <div className={styles.iconWrapper}>
                     <div className={styles.icon}><FaUsers color="#9E1F63"/></div>
                     <NavLink to="/users" className={styles.nonActive} activeClassName={styles.active}>Users</NavLink>
+                </div>
+            </div>
+            <div className={styles.item}>
+                <div className={styles.iconWrapper}>
+                    <div className={styles.icon}><FaSignInAlt color="#a8dadc"/></div>
+                    <NavLink to="/login" className={styles.nonActive} activeClassName={styles.active}>Login</NavLink>
                 </div>
             </div>
         </nav>
