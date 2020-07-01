@@ -20,7 +20,13 @@
 }
 
 .login {
+    text-decoration: none;
     color: #d3d2d2;
+}
+
+.login a {
+    color: white;
+    text-decoration: none;
 }
 
 

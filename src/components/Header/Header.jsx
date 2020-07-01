@@ -12,7 +12,6 @@ const Header = (props) => {
             <div className={styles.headerWrapper}>
                 <img src={logo}></img>
                 <div className={styles.login}>
-
                     {props.isAuth ? props.login : <div><NavLink to={"/login"}>login</NavLink></div>}
                 </div>
             </div>
